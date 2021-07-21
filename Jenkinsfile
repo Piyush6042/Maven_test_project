@@ -6,6 +6,11 @@ pipeline {
                 sh "mvn clean compile"
                 sh "printenv"
             }
+                post { 
+        always { 
+           junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+        }
+    }
         }
         stage('Test') { 
             steps {
