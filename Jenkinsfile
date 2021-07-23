@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Docker build image') { 
             steps {
-                sh "docker build -t piyush6042/jenkins:$(BUILD_NUMBER) ." 
+                sh "docker build -t piyush6042/jenkins:${BUILD_NUMBER} ." 
             }
         }
         stage('Docker hub login') { 
@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Push image to Docker hub') { 
             steps {
-                sh "docker push piyush6042/jenkins:$(BUILD_NUMBER)" 
+                sh "docker push piyush6042/jenkins:${BUILD_NUMBER}" 
             }
         }
           stage('Deploy') { 
