@@ -25,8 +25,9 @@ pipeline {
         }
         stage('Docker hub login') { 
             steps {
-                withCredentials([string(credentialsId: 'dockerhub11', variable: 'dockerpwd')])
+                withCredentials([string(credentialsId: 'dockerhub11', variable: 'dockerpwd')]) {
                 sh "docker login -u piyush6042 -p ${dockerpwd}" 
+                }
             }
         }
         stage('Push image to Docker hub') { 
