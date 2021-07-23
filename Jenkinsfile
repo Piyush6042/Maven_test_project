@@ -11,12 +11,13 @@ pipeline {
            junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
         }
     }
+     }
      stage('Test') { 
          steps {
                 sh "mvn test -f /var/lib/jenkins/workspace/Maven_Sample_Pipeline/Maven_test_project/pom.xml" 
             }
         }
-        }
+        
         stage('Docker build image') { 
             steps {
                 sh "docker build -t piyush6042/jenkins:${BUILD_NUMBER} ." 
